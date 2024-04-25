@@ -2,7 +2,7 @@
 
 import {useEffect, useState} from "react";
 
-function copyToClipboard(text) {
+function copyToClipboard(text:string) {
     // 使用navigator.clipboard API复制文本
     navigator.clipboard.writeText(text).then(() => {
         console.log('Text copied to clipboard');
@@ -15,7 +15,7 @@ export default function Page(){
     const [ck,setCK] = useState('');
     const [core,setCore] = useState('');
     const [showSuccess, setShowSuccess]= useState(false);
-    const getCore = function (str){
+    const getCore = function (str:string){
         const reg = /pt_key=(.+?); pt_pin=(\w+?);/;
         const matches = reg.exec(str);
         if(matches){
@@ -40,7 +40,7 @@ export default function Page(){
             <div id={'core'}  className="bg-success" style={{minHeight:50 ,marginBottom:10}}>{core} </div>
             <div className={'flex'} style={{alignItems:"center"}}>
                 <button className="btn btn-primary" onClick={copy}>复制</button>
-                {showSuccess && <span class="text-success" style={{marginLeft:10}}>复制成功</span>}
+                {showSuccess && <span className="text-success" style={{marginLeft:10}}>复制成功</span>}
                 <button className={'btn btn-danger'} style={{marginLeft:10}} onClick={()=>setCK('')}>清空</button>
             </div>
             <div style={{marginTop:20}}>
